@@ -1,4 +1,4 @@
-package com.kgozdz.centus;
+package com.kgozdz.centus.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

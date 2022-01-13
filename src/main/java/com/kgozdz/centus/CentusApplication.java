@@ -8,17 +8,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 
-import java.lang.module.Configuration;
-import java.sql.*;
 import java.io.IOException;
 import java.util.List;
 
-public class HelloApplication extends Application {
+public class CentusApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FXMLLoader fxmlLoader = new FXMLLoader(CentusApplication.class.getResource("login-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 360);
         stage.setTitle("Centus!");
         stage.setScene(scene);
         stage.show();
@@ -41,22 +39,22 @@ public class HelloApplication extends Application {
 //        }
 
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        session.beginTransaction();
+//
+//        List<User> result = session.createQuery("from User", User.class).list();
+//
+//        result.forEach(person -> {
+//            System.out.println(person.getEmail());
+//
+//            person.getBudgets().forEach(budget ->
+//                    System.out.println("    budget for " + budget.month + "." + budget.year + " is: " + budget.amount));
+//        });
+//        session.getTransaction().commit();
+//
+//
+//        HibernateUtil.shutdown();
 
-        List<User> result = session.createQuery("from User", User.class).list();
-
-        result.forEach(person -> {
-            System.out.println(person.getEmail());
-
-            person.getBudgets().forEach(budget ->
-                    System.out.println("    budget for " + budget.month + "." + budget.year + " is: " + budget.amount));
-        });
-        session.getTransaction().commit();
-
-
-        HibernateUtil.shutdown();
-
-//        launch();
+        launch();
     }
 }

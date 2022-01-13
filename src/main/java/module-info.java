@@ -9,4 +9,6 @@ module com.kgozdz.centus {
     opens com.kgozdz.centus to javafx.fxml;
     opens com.kgozdz.centus.model to org.hibernate.orm.core;
     exports com.kgozdz.centus;
+    exports com.kgozdz.centus.controller;
+    opens com.kgozdz.centus.controller to javafx.fxml;
 }
