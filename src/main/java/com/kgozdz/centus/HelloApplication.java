@@ -47,7 +47,10 @@ public class HelloApplication extends Application {
         List<User> result = session.createQuery("from User", User.class).list();
 
         result.forEach(person -> {
-            System.out.println(person.getLastName());
+            System.out.println(person.getEmail());
+
+            person.getBudgets().forEach(budget ->
+                    System.out.println("    budget for " + budget.month + "." + budget.year + " is: " + budget.amount));
         });
         session.getTransaction().commit();
 

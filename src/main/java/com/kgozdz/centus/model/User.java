@@ -1,6 +1,7 @@
 package com.kgozdz.centus.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -17,14 +18,17 @@ public class User {
     @Column(name = "username", unique = true, nullable = false, length = 100)
     public String userName;
 
-    @Column(name = "firstname", unique = false, nullable = false, length = 100)
+    @Column(name = "firstname", nullable = false, length = 100)
     public String firstName;
 
-    @Column(name = "lastname", unique = false, nullable = false, length = 100)
+    @Column(name = "lastname", nullable = false, length = 100)
     public String lastName;
 
-    @Column(name = "passwordHash", unique = false, nullable = false, length = 255)
+    @Column(name = "passwordHash",  nullable = false)
     public String password;
+
+    @OneToMany(mappedBy="user")
+    private Set<Budget> budgets;
 
     public Integer getUserId() {
         return userId;
@@ -72,5 +76,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Budget> getBudgets() {
+        return budgets;
+    }
+
+    public void setBudgets(Set<Budget> budgets) {
+        this.budgets = budgets;
     }
 }
