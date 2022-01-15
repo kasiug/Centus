@@ -1,6 +1,5 @@
 package com.kgozdz.centus.controller;
 
-import com.kgozdz.centus.CentusApplication;
 import com.kgozdz.centus.repository.IUserRepository;
 import com.kgozdz.centus.repository.implementation.UserRepository;
 import javafx.event.ActionEvent;
@@ -17,12 +16,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginController {
+public class RegisterController {
 
     private IUserRepository userRepository;
 
     @FXML
-    private Label errorMessageLabel;
+    private Label userExistErrorMessage;
+
+    @FXML
+    private TextField emailTextField;
 
     @FXML
     private TextField usernameTextField;
@@ -31,25 +33,26 @@ public class LoginController {
     private TextField passwordTextField;
 
     @FXML
-    private Button loginButton;
+    private TextField repeatPasswordField;
 
     @FXML
-    private Hyperlink registerUserLink;
+    private Button registerButton;
 
-    public LoginController() {
+    @FXML
+    private Hyperlink exitToLoginPageLink;
+
+    public RegisterController() {
         this.userRepository = new UserRepository();
     }
 
     @FXML
-    protected void onLoginButtonClick() {
-        boolean isLogged = this.userRepository.login(usernameTextField.getText(), passwordTextField.getText());
-        String message = isLogged ? "Logged" : "Invalid Username or password";
+    protected void onRegisterButtonClick() {
 
-        errorMessageLabel.setText(message);
     }
 
-    public void onRegisterUserLinkClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/register-view.fxml"));
+    @FXML
+    protected void onExitToLoginPageLinkClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/login-view.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
