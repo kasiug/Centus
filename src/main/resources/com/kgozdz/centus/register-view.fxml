@@ -13,41 +13,60 @@
    <top>
       <AnchorPane prefHeight="261.0" prefWidth="614.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="259.0" layoutY="55.0" text="Rejestracja">
+            <Label layoutX="253.0" layoutY="41.0" text="Rejestracja">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="264.0" layoutY="14.0" prefHeight="51.0" prefWidth="120.0" text="Centuś">
+            <Label layoutX="259.0" prefHeight="51.0" prefWidth="120.0" text="Centuś">
                <font>
                   <Font name="Calibri" size="36.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="35.0" layoutY="131.0" prefHeight="135.0" prefWidth="281.0">
+            <AnchorPane layoutX="35.0" layoutY="96.0" prefHeight="199.0" prefWidth="281.0">
                <children>
-                  <Label layoutX="155.0" layoutY="43.0" text="Nazwa użytkownika">
-                     <font>
-                        <Font name="Calibri" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="231.0" layoutY="76.0" prefHeight="20.0" prefWidth="37.0" text="Hasło">
+                  <Label layoutX="242.0" layoutY="4.0" prefHeight="17.0" prefWidth="30.0" text="Imię">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="193.0" layoutY="113.0" text="Powtórz hasło" />
-                  <Label layoutX="199.0" layoutY="2.0" prefHeight="24.0" prefWidth="65.0" text="Adres email" />
+                  <Label layoutX="160.0" layoutY="106.0" text="Nazwa użytkownika">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="232.0" layoutY="136.0" prefHeight="20.0" prefWidth="37.0" text="Hasło">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="203.0" layoutY="69.0" prefHeight="24.0" prefWidth="77.0" text="Adres email">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label layoutX="221.0" layoutY="40.0" prefHeight="17.0" prefWidth="59.0" text="Nazwisko">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="300.0" layoutY="119.0" prefHeight="147.0" prefWidth="319.0">
+            <AnchorPane layoutX="300.0" layoutY="119.0" prefHeight="181.0" prefWidth="319.0">
                <children>
-                  <TextField fx:id="usernameTextField" layoutX="16.0" layoutY="49.0" prefHeight="25.0" prefWidth="165.0" promptText="Nazwa użytkownka" />
-                  <PasswordField fx:id="passwordTextField" layoutX="16.0" layoutY="84.0" prefHeight="25.0" prefWidth="165.0" promptText="Hasło" />
-                  <PasswordField fx:id="repeatPasswordField" layoutX="15.0" layoutY="121.0" prefHeight="25.0" prefWidth="166.0" promptText="Powtórz hasło" />
-                  <PasswordField fx:id="emailTextField" layoutX="15.0" layoutY="14.0" prefHeight="25.0" prefWidth="166.0" promptText="Adres email" />
+                  <TextField fx:id="usernameTextField" layoutX="18.0" layoutY="78.0" prefHeight="25.0" prefWidth="165.0" promptText="Nazwa użytkownka" />
+                  <PasswordField fx:id="passwordTextField" layoutX="18.0" layoutY="110.0" prefHeight="25.0" prefWidth="165.0" promptText="Hasło" />
+                  <PasswordField fx:id="repeatPasswordField" layoutX="18.0" layoutY="142.0" prefHeight="25.0" prefWidth="166.0" promptText="Powtórz hasło" />
+                  <TextField fx:id="emailTextField" layoutX="18.0" layoutY="47.0" prefHeight="25.0" prefWidth="166.0" promptText="Adres email" />
+                  <TextField fx:id="lastNameField" layoutX="18.0" layoutY="14.0" prefHeight="25.0" prefWidth="165.0" promptText="Nazwisko" />
                </children>
             </AnchorPane>
-            <Label fx:id="userExistErrorMessage" layoutX="228.0" layoutY="102.0" prefHeight="17.0" prefWidth="215.0" text="Taki użytkownik już istnieje w bazie" textFill="#f81010" />
+            <Label fx:id="userExistErrorMessage" layoutX="212.0" layoutY="76.0" prefHeight="17.0" prefWidth="215.0" text="Taki użytkownik już istnieje w bazie" textFill="#f81010" />
+            <TextField fx:id="firstNameField" layoutX="319.0" layoutY="98.0" prefHeight="25.0" prefWidth="166.0" promptText="Imię" />
+            <Label layoutX="222.0" layoutY="266.0" text="Powtórz hasło">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </top>
@@ -55,7 +74,7 @@
       <AnchorPane prefHeight="142.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Hyperlink fx:id="exitToLoginPageLink" layoutX="221.0" layoutY="57.0" onAction="#onExitToLoginPageLinkClick" text="Powrót do strony logowania" />
-            <Button fx:id="registerButton" alignment="CENTER" layoutX="167.0" layoutY="14.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="30.0" prefWidth="266.0" text="Zarejestruj">
+            <Button fx:id="registerButton" alignment="CENTER" layoutX="167.0" layoutY="27.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="30.0" prefWidth="266.0" text="Zarejestruj">
                <font>
                   <Font size="14.0" />
                </font>

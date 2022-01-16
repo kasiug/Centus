@@ -22,8 +22,6 @@ public class UserRepository implements IUserRepository {
             e.printStackTrace();
         }
 
-        System.out.println("pass hash is " + passwordHash);
-
         Query query = session.createQuery("from User where username=:username and passwordHash=:passwordHash", User.class);
         query.setParameter("username", username);
         query.setParameter("passwordHash", passwordHash);
@@ -36,6 +34,10 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public void register(User user) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
 
+        session.save(user);
+        session.getTransaction().commit();
     }
 }
