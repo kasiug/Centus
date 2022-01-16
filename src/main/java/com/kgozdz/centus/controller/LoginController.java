@@ -41,11 +41,20 @@ public class LoginController {
     }
 
     @FXML
-    protected void onLoginButtonClick() {
+    protected void onLoginButtonClick(ActionEvent event) throws IOException {
         boolean isLogged = this.userRepository.login(usernameTextField.getText(), passwordTextField.getText());
-        String message = isLogged ? "Logged" : "Invalid Username or password";
+        if (isLogged){
+            Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/home-view.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            String message = "Nieprawidłowa nazwa użytkownika lub hasło";
+            errorMessageLabel.setText(message);
+        }
 
-        errorMessageLabel.setText(message);
+
     }
 
     public void onRegisterUserLinkClick(ActionEvent event) throws IOException {
@@ -54,5 +63,9 @@ public class LoginController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void onLoginButtonClick() throws IOException {
+
     }
 }
