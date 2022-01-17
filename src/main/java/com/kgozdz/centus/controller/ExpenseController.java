@@ -16,33 +16,23 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HomeController {
+public class ExpenseController {
     private IUserRepository userRepository;
 
 
     @FXML
-    private TextField expensesField;
+    private Label dateTime;
 
     @FXML
-    private TextField remainingAmountField;
+    private TextField amount;
 
     @FXML
     private Button logOutButton;
 
     @FXML
-    private Button addExpenseButton;
+    private Hyperlink exitToHomePageLink;
 
-    @FXML
-    private Button changeLimitButton;
-
-    @FXML
-    private Button monthlyStatement;
-
-    @FXML
-    private Button yearlyStatement;
-
-
-    public HomeController() {
+    public ExpenseController() {
         this.userRepository = new UserRepository();
     }
 
@@ -54,16 +44,21 @@ public class HomeController {
 //        errorMessageLabel.setText(message);
 //    }
 
-    public void onLogOutButtonClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/login-view.fxml"));
+    @FXML
+    protected void onExitToHomePageLinkClick(ActionEvent event) throws IOException {
+        this.moveToHomePage(event);
+    }
+
+    public void moveToHomePage(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/home-view.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void onAddExpenseButtonButtonClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/expense-view.fxml"));
+    public void onLogOutButtonClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/login-view.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

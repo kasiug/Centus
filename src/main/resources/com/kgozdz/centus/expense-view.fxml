@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kgozdz.centus.controller.ExpenseController">
+   <top>
+      <AnchorPane prefHeight="261.0" prefWidth="614.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="228.0" layoutY="65.0" text="Nowy wydatek">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="246.0" layoutY="15.0" prefHeight="51.0" prefWidth="120.0" text="Centuś">
+               <font>
+                  <Font name="Calibri" size="36.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="35.0" layoutY="127.0" prefHeight="152.0" prefWidth="559.0">
+               <children>
+                  <Label layoutX="43.0" layoutY="52.0" prefHeight="24.0" prefWidth="142.0" text="Kwota wydana dziś to:">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <TextField layoutX="218.0" layoutY="52.0" />
+                  <Label layoutX="380.0" layoutY="56.0" text="zł" />
+               </children>
+            </AnchorPane>
+            <Label fx:id="userExistErrorMessage" layoutX="228.0" layoutY="102.0" prefHeight="17.0" prefWidth="215.0" textFill="#f81010" />
+            <Button fx:id="logOutButton" alignment="CENTER" layoutX="432.0" layoutY="25.0" mnemonicParsing="false" onAction="#onLogOutButtonClick" prefHeight="30.0" prefWidth="145.0" text="Wyloguj">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="dateTime" layoutX="204.0" layoutY="111.0" prefHeight="17.0" prefWidth="221.0" />
+         </children>
+      </AnchorPane>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="142.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Hyperlink fx:id="exitToHomePageLink" layoutX="228.0" layoutY="29.0" onAction="#onExitToHomePageLinkClick" text="Powrót do strony głównej" />
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>
