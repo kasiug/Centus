@@ -40,8 +40,8 @@
    <bottom>
       <AnchorPane prefHeight="142.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="monthlyStatement" layoutX="32.0" layoutY="25.0" mnemonicParsing="false" onAction="#onYearlyStatementButtonClick" text="Zestawienie miesięczne" />
-            <Button fx:id="yearlyStatement" layoutX="255.0" layoutY="25.0" mnemonicParsing="false" onAction="#onMonthlyStatementButtonClick" text="Zestawienie roczne" />
+            <Button fx:id="monthlyStatement" layoutX="32.0" layoutY="25.0" mnemonicParsing="false" onAction="#onMonthlyStatementButtonClick" text="Zestawienie miesięczne" />
+            <Button fx:id="yearlyStatement" layoutX="255.0" layoutY="25.0" mnemonicParsing="false" onAction="#onYearlyStatementButtonClick" text="Zestawienie roczne" />
          </children>
       </AnchorPane>
    </bottom>
