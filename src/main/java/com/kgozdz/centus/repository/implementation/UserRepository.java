@@ -1,5 +1,6 @@
 package com.kgozdz.centus.repository.implementation;
 
+import com.kgozdz.centus.UserSession;
 import com.kgozdz.centus.model.User;
 import com.kgozdz.centus.repository.IUserRepository;
 import com.kgozdz.centus.utils.Cryptography;
@@ -11,7 +12,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class UserRepository implements IUserRepository {
     @Override
-    public boolean login(String username, String password) {
+    public void login(String username, String password) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
@@ -29,7 +30,10 @@ public class UserRepository implements IUserRepository {
         var result = query.getResultList();
         session.getTransaction().commit();
 
-        return result.size() == 1;
+        if(result != null && result.size()>0){
+            User user = (User) result.get(0);
+            UserSession.getInstance(user.userId, user.userName);
+        }
     }
 
     @Override

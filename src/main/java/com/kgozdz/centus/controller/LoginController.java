@@ -1,6 +1,7 @@
 package com.kgozdz.centus.controller;
 
 import com.kgozdz.centus.CentusApplication;
+import com.kgozdz.centus.UserSession;
 import com.kgozdz.centus.repository.IUserRepository;
 import com.kgozdz.centus.repository.implementation.UserRepository;
 import javafx.event.ActionEvent;
@@ -42,8 +43,8 @@ public class LoginController {
 
     @FXML
     protected void onLoginButtonClick(ActionEvent event) throws IOException {
-        boolean isLogged = this.userRepository.login(usernameTextField.getText(), passwordTextField.getText());
-        if (isLogged){
+        this.userRepository.login(usernameTextField.getText(), passwordTextField.getText());
+        if (UserSession.getUserId() > 0){
             Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/home-view.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

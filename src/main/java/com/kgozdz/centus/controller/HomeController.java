@@ -1,5 +1,6 @@
 package com.kgozdz.centus.controller;
 
+import com.kgozdz.centus.UserSession;
 import com.kgozdz.centus.repository.IUserRepository;
 import com.kgozdz.centus.repository.implementation.UserRepository;
 import javafx.event.ActionEvent;
@@ -15,10 +16,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class HomeController {
     private IUserRepository userRepository;
-
 
     @FXML
     private TextField expensesField;
@@ -41,9 +42,13 @@ public class HomeController {
     @FXML
     private Button yearlyStatement;
 
-
     public HomeController() {
         this.userRepository = new UserRepository();
+    }
+
+    @FXML
+    protected void initialize() {
+        logOutButton.setText("Wyloguj "+ UserSession.getUserName());
     }
 
 //    @FXML
@@ -55,6 +60,7 @@ public class HomeController {
 //    }
 
     public void onLogOutButtonClick(ActionEvent event) throws IOException {
+        UserSession.cleanUserSession();
         Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/login-view.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
