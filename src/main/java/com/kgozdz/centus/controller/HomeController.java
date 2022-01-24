@@ -1,7 +1,9 @@
 package com.kgozdz.centus.controller;
 
 import com.kgozdz.centus.UserSession;
+import com.kgozdz.centus.repository.IExpenseRepository;
 import com.kgozdz.centus.repository.IUserRepository;
+import com.kgozdz.centus.repository.implementation.ExpenseRepository;
 import com.kgozdz.centus.repository.implementation.UserRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,9 +19,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 
 public class HomeController {
     private IUserRepository userRepository;
+    private IExpenseRepository expenseRepository;
 
     @FXML
     private TextField expensesField;
@@ -44,11 +48,18 @@ public class HomeController {
 
     public HomeController() {
         this.userRepository = new UserRepository();
+        this.expenseRepository = new ExpenseRepository();
     }
 
     @FXML
     protected void initialize() {
         logOutButton.setText("Wyloguj "+ UserSession.getUserName());
+        Date date = new Date();
+        Integer currentMonth = java.time.LocalDate.now().getMonth().getValue();
+        Integer currentYear = java.time.LocalDate.now().getYear();
+        var userExpenses = this.expenseRepository.getUserExpenses(currentMonth.byteValue(), currentYear.shortValue());
+        var expensesSum = userExpenses.stream().mapToDouble(e -> e.amount).sum();
+        expensesField.setText(Double.toString(expensesSum));
     }
 
 //    @FXML

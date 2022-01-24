@@ -28,9 +28,9 @@
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <TextField layoutX="218.0" layoutY="52.0" />
+                  <TextField fx:id="expenseAmount" layoutX="218.0" layoutY="52.0" />
                   <Label layoutX="380.0" layoutY="56.0" text="zł" />
-                  <Button layoutX="218.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Zapisz" />
+                  <Button fx:id="saveButton" layoutX="218.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Zapisz" />
                </children>
             </AnchorPane>
             <Label fx:id="userExistErrorMessage" layoutX="228.0" layoutY="102.0" prefHeight="17.0" prefWidth="215.0" textFill="#f81010" />

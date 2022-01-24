@@ -20,5 +20,6 @@
         <!-- Names the annotated entity class -->
         <mapping class="com.kgozdz.centus.model.User"/>
         <mapping class="com.kgozdz.centus.model.Budget"/>
+        <mapping class="com.kgozdz.centus.model.Expense"/>
     </session-factory>
 </hibernate-configuration>
