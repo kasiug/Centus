@@ -1,8 +1,10 @@
 package com.kgozdz.centus.controller;
 
 import com.kgozdz.centus.UserSession;
+import com.kgozdz.centus.repository.IBudgetRepository;
 import com.kgozdz.centus.repository.IExpenseRepository;
 import com.kgozdz.centus.repository.IUserRepository;
+import com.kgozdz.centus.repository.implementation.BudgetRepository;
 import com.kgozdz.centus.repository.implementation.ExpenseRepository;
 import com.kgozdz.centus.repository.implementation.UserRepository;
 import javafx.event.ActionEvent;
@@ -24,6 +26,7 @@ import java.util.Date;
 public class HomeController {
     private IUserRepository userRepository;
     private IExpenseRepository expenseRepository;
+    private IBudgetRepository budgetRepository;
 
     @FXML
     private TextField expensesField;
@@ -49,6 +52,7 @@ public class HomeController {
     public HomeController() {
         this.userRepository = new UserRepository();
         this.expenseRepository = new ExpenseRepository();
+        this.budgetRepository = new BudgetRepository();
     }
 
     @FXML
@@ -59,7 +63,10 @@ public class HomeController {
         Integer currentYear = java.time.LocalDate.now().getYear();
         var userExpenses = this.expenseRepository.getUserExpenses(currentMonth.byteValue(), currentYear.shortValue());
         var expensesSum = userExpenses.stream().mapToDouble(e -> e.amount).sum();
+        var userBudget = this.budgetRepository.getUserBudget(currentMonth.byteValue(), currentYear.shortValue());
+        var restToSpend = userBudget.amount - expensesSum;
         expensesField.setText(Double.toString(expensesSum));
+        remainingAmountField.setText(Double.toString(restToSpend));
     }
 
 //    @FXML
