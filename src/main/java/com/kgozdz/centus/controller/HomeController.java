@@ -64,7 +64,7 @@ public class HomeController {
         var userExpenses = this.expenseRepository.getUserExpenses(currentMonth.byteValue(), currentYear.shortValue());
         var expensesSum = userExpenses.stream().mapToDouble(e -> e.amount).sum();
         var userBudget = this.budgetRepository.getUserBudget(currentMonth.byteValue(), currentYear.shortValue());
-        var restToSpend = userBudget.amount - expensesSum;
+        var restToSpend = userBudget != null ? userBudget.amount - expensesSum: 0;
         expensesField.setText(Double.toString(expensesSum));
         remainingAmountField.setText(Double.toString(restToSpend));
     }
