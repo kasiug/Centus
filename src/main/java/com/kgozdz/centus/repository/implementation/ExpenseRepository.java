@@ -19,10 +19,8 @@ public class ExpenseRepository implements IExpenseRepository {
         int userId = UserSession.getUserId();
         Query query = session.createQuery("from Expense where userId=:userId and month=:month and year=:year", Expense.class);
         query.setParameter("userId", userId);
-
         query.setParameter("month", month);
         query.setParameter("year", year);
-
 
         var  result = query.getResultList();
         if(result!=null){
@@ -30,11 +28,13 @@ public class ExpenseRepository implements IExpenseRepository {
         }else{
             return null;
         }
-
     }
 
     @Override
     public void addExpense(Expense expense) {
-
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(expense);
+        session.getTransaction().commit();
     }
 }

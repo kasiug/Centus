@@ -44,4 +44,21 @@ public class UserRepository implements IUserRepository {
         session.save(user);
         session.getTransaction().commit();
     }
+
+    @Override
+    public User getUser(int id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("from User where id=:id", User.class);
+        query.setParameter("id", id);
+
+        var result = query.getResultList();
+
+        User user= null;
+        if(result != null && result.size()>0){
+            user = (User) result.get(0);
+        }
+        return user;
+    }
 }

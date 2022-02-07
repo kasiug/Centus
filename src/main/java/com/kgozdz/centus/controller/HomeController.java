@@ -58,7 +58,6 @@ public class HomeController {
     @FXML
     protected void initialize() {
         logOutButton.setText("Wyloguj "+ UserSession.getUserName());
-        Date date = new Date();
         Integer currentMonth = java.time.LocalDate.now().getMonth().getValue();
         Integer currentYear = java.time.LocalDate.now().getYear();
         var userExpenses = this.expenseRepository.getUserExpenses(currentMonth.byteValue(), currentYear.shortValue());
