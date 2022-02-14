@@ -20,8 +20,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.RoundingMode;
 import java.net.URL;
+import java.text.NumberFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class HomeController {
     private IUserRepository userRepository;
@@ -64,8 +67,8 @@ public class HomeController {
         var expensesSum = userExpenses.stream().mapToDouble(e -> e.amount).sum();
         var userBudget = this.budgetRepository.getUserBudget(currentMonth.byteValue(), currentYear.shortValue());
         var restToSpend = userBudget != null ? userBudget.amount - expensesSum: 0;
-        expensesField.setText(Double.toString(expensesSum));
-        remainingAmountField.setText(Double.toString(restToSpend));
+        expensesField.setText(currencyFormat(expensesSum));
+        remainingAmountField.setText(currencyFormat(restToSpend));
     }
 
 //    @FXML
@@ -115,5 +118,13 @@ public class HomeController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private static String currencyFormat(double value) {
+        NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pl", "pl"));
+        format.setMinimumFractionDigits(2);
+        format.setMaximumFractionDigits(2);
+        format.setRoundingMode(RoundingMode.HALF_EVEN);
+        return format.format(value);
     }
 }

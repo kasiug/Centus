@@ -9,7 +9,7 @@ import com.kgozdz.centus.utils.HibernateUtil;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
-import java.util.List;
+
 
 public class BudgetRepository implements IBudgetRepository {
 
@@ -24,11 +24,10 @@ public class BudgetRepository implements IBudgetRepository {
         query.setParameter("month", month);
         query.setParameter("year", year);
 
-
-        var  result = query.getResultList();
-        if(result!=null && result.size()>0){
+        var result = query.getResultList();
+        if (result != null && result.size() > 0) {
             return (Budget) result.get(0);
-        }else{
+        } else {
             return null;
         }
 
@@ -36,6 +35,17 @@ public class BudgetRepository implements IBudgetRepository {
 
     @Override
     public void setBudget(Budget budget) {
+        var existingBudget = getUserBudget(budget.month, budget.year);
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        if (existingBudget == null) {
+            session.save(budget);
+        } else {
+            existingBudget.setAmount(budget.amount);
+            session.update(existingBudget);
+        }
+        session.getTransaction().commit();
+
 
     }
 }
