@@ -43,6 +43,7 @@ public class LoginController {
 
     @FXML
     protected void onLoginButtonClick(ActionEvent event) throws IOException {
+        loginButton.setText("Logowanie...");
         this.userRepository.login(usernameTextField.getText(), passwordTextField.getText());
         if (UserSession.getUserId() > 0){
             Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/home-view.fxml"));
@@ -51,11 +52,10 @@ public class LoginController {
             stage.setScene(scene);
             stage.show();
         } else {
+            loginButton.setText("Zaloguj");
             String message = "Nieprawidłowa nazwa użytkownika lub hasło";
             errorMessageLabel.setText(message);
         }
-
-
     }
 
     public void onRegisterUserLinkClick(ActionEvent event) throws IOException {

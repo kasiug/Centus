@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface IExpenseRepository {
     List<Expense> getUserExpenses(byte month, short year);
+    List<Expense> getUserExpenses(short year);
+    List<Expense> getUserExpenses();
     void addExpense(Expense expense);
 
 }

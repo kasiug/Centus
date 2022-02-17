@@ -34,6 +34,7 @@ public class UserRepository implements IUserRepository {
             User user = (User) result.get(0);
             UserSession.getInstance(user.userId, user.userName);
         }
+        session.close();
     }
 
     @Override
@@ -43,6 +44,7 @@ public class UserRepository implements IUserRepository {
 
         session.save(user);
         session.getTransaction().commit();
+        session.close();
     }
 
     @Override
@@ -54,6 +56,7 @@ public class UserRepository implements IUserRepository {
         query.setParameter("id", id);
 
         var result = query.getResultList();
+        session.close();
 
         User user= null;
         if(result != null && result.size()>0){

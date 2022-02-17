@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
@@ -24,20 +24,20 @@
                   <Font name="Calibri" size="36.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="35.0" layoutY="127.0" prefHeight="189.0" prefWidth="559.0">
+            <AnchorPane layoutX="35.0" layoutY="127.0" prefHeight="231.0" prefWidth="559.0">
                <children>
-                  <Hyperlink fx:id="exitToHomePageLink" layoutX="207.0" layoutY="185.0" onAction="#onExitToHomePageLinkClick" text="Powrót do strony głównej" />
-                  <LineChart layoutX="-15.0" layoutY="-24.0" prefHeight="211.0" prefWidth="500.0">
+                  <BarChart fx:id="barChart" layoutX="-20.0" layoutY="-43.0" prefHeight="234.0" prefWidth="565.0">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" />
+                      <CategoryAxis label="Miesiące" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis side="LEFT" />
+                      <NumberAxis label="Wydatki i koszty w zł" side="LEFT" />
                     </yAxis>
-                  </LineChart>
+                  </BarChart>
+                  <Hyperlink fx:id="exitToHomePageLink" layoutX="207.0" layoutY="185.0" onAction="#onExitToHomePageLinkClick" text="Powrót do strony głównej" />
                </children>
             </AnchorPane>
-            <Label fx:id="userExistErrorMessage" layoutX="228.0" layoutY="102.0" prefHeight="17.0" prefWidth="215.0" textFill="#f81010" />
+            <Label fx:id="userExistErrorMessage" layoutX="228.0" layoutY="102.0" prefHeight="17.0" prefWidth="141.0" textFill="#f81010" />
             <Button fx:id="logOutButton" alignment="CENTER" layoutX="432.0" layoutY="25.0" mnemonicParsing="false" onAction="#onLogOutButtonClick" prefHeight="30.0" prefWidth="145.0" text="Wyloguj">
                <font>
                   <Font size="14.0" />
