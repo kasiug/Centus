@@ -1,6 +1,5 @@
 package com.kgozdz.centus.controller;
 
-import com.kgozdz.centus.CentusApplication;
 import com.kgozdz.centus.UserSession;
 import com.kgozdz.centus.repository.IUserRepository;
 import com.kgozdz.centus.repository.implementation.UserRepository;

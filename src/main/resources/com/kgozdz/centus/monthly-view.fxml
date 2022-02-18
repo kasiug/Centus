@@ -10,35 +10,35 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kgozdz.centus.controller.MonthlyController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kgozdz.centus.controller.MonthlyController">
    <top>
       <AnchorPane prefHeight="341.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="177.0" layoutY="49.0" text="Zestawienie miesięczne">
+            <Label layoutX="277.0" layoutY="56.0" text="Zestawienie miesięczne">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="246.0" layoutY="15.0" prefHeight="51.0" prefWidth="120.0" text="Centuś">
+            <Label layoutX="356.0" layoutY="16.0" prefHeight="41.0" prefWidth="104.0" text="Centuś">
                <font>
                   <Font name="Calibri" size="36.0" />
                </font>
             </Label>
             <AnchorPane layoutX="35.0" layoutY="127.0" prefHeight="231.0" prefWidth="559.0">
                <children>
-                  <BarChart fx:id="barChart" layoutX="-20.0" layoutY="-43.0" prefHeight="234.0" prefWidth="565.0">
+                  <BarChart fx:id="barChart" layoutX="-29.0" layoutY="-36.0" prefHeight="358.0" prefWidth="786.0">
                     <xAxis>
-                      <CategoryAxis label="Miesiące" side="BOTTOM" />
+                      <CategoryAxis label="Miesiące" prefHeight="43.0" prefWidth="708.0" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
                       <NumberAxis label="Wydatki i koszty w zł" side="LEFT" />
                     </yAxis>
                   </BarChart>
-                  <Hyperlink fx:id="exitToHomePageLink" layoutX="207.0" layoutY="185.0" onAction="#onExitToHomePageLinkClick" text="Powrót do strony głównej" />
+                  <Hyperlink fx:id="exitToHomePageLink" layoutX="299.0" layoutY="320.0" onAction="#onExitToHomePageLinkClick" text="Powrót do strony głównej" />
                </children>
             </AnchorPane>
             <Label fx:id="userExistErrorMessage" layoutX="228.0" layoutY="102.0" prefHeight="17.0" prefWidth="141.0" textFill="#f81010" />
-            <Button fx:id="logOutButton" alignment="CENTER" layoutX="432.0" layoutY="25.0" mnemonicParsing="false" onAction="#onLogOutButtonClick" prefHeight="30.0" prefWidth="145.0" text="Wyloguj">
+            <Button fx:id="logOutButton" alignment="CENTER" layoutX="641.0" layoutY="26.0" mnemonicParsing="false" onAction="#onLogOutButtonClick" prefHeight="30.0" prefWidth="145.0" text="Wyloguj">
                <font>
                   <Font size="14.0" />
                </font>
@@ -48,6 +48,6 @@
       </AnchorPane>
    </top>
    <bottom>
-      <AnchorPane prefHeight="142.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="86.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>
