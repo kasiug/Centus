@@ -30,8 +30,6 @@
             <TextField fx:id="expensesField" disable="true" editable="false" layoutX="284.0" layoutY="150.0" prefHeight="25.0" prefWidth="110.0" />
             <Label layoutX="48.0" layoutY="210.0" text="Do wydania w tym miesiącu pozostało Ci" />
             <TextField fx:id="remainingAmountField" disable="true" editable="false" layoutX="284.0" layoutY="206.0" prefHeight="25.0" prefWidth="111.0" />
-            <Label layoutX="399.0" layoutY="154.0" prefHeight="17.0" prefWidth="40.0" text="zł" />
-            <Label layoutX="399.0" layoutY="210.0" text="zł" />
             <Button fx:id="addExpenseButton" layoutX="432.0" layoutY="150.0" mnemonicParsing="false" onAction="#onAddExpenseButtonButtonClick" prefHeight="25.0" prefWidth="111.0" text="Dodaj wydatek" />
             <Button fx:id="changeLimitButton" layoutX="431.0" layoutY="206.0" mnemonicParsing="false" onAction="#onChangeLimitButtonClick" prefWidth="113.0" text="Zmień limit" />
          </children>

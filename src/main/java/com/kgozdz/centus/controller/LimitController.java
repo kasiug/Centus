@@ -6,6 +6,7 @@ import com.kgozdz.centus.repository.IBudgetRepository;
 import com.kgozdz.centus.repository.IUserRepository;
 import com.kgozdz.centus.repository.implementation.BudgetRepository;
 import com.kgozdz.centus.repository.implementation.UserRepository;
+import com.kgozdz.centus.utils.Helpers;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -22,16 +23,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.kgozdz.centus.utils.Helpers.getCurrentMonth;
-import static com.kgozdz.centus.utils.Helpers.getCurrentYear;
+import static com.kgozdz.centus.utils.Helpers.*;
 
 public class LimitController {
 
     private IUserRepository userRepository;
     private IBudgetRepository budgetRepository;
-
-    @FXML
-    private Label dateTime;
 
     @FXML
     private TextField amount;
@@ -55,38 +52,18 @@ public class LimitController {
         Integer currentYear = java.time.LocalDate.now().getYear();
         var userBudget = this.budgetRepository.getUserBudget(currentMonth.byteValue(), currentYear.shortValue());
 
-        var budgetAmount = userBudget != null? userBudget.amount : 0.0;
+        var budgetAmount = userBudget != null ? userBudget.amount : 0.0;
         amount.setText(Double.toString(budgetAmount));
 
         amount.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
                                 String newValue) {
-                if(!isPositiveNumeric(newValue)){
+                if (!isPositiveNumeric(newValue)) {
                     amount.setText(Double.toString(budgetAmount));
                 }
             }
         });
-    }
-//    @FXML
-//    protected void onLogOutButtonClick() {
-//        boolean isLogged = this.userRepository.login(usernameTextField.getText(), passwordTextField.getText());
-//        String message = isLogged ? "Logged" : "Invalid Username or password";
-//
-//        errorMessageLabel.setText(message);
-//    }
-
-    public static boolean isPositiveNumeric(String strNum) {
-        if (strNum == null) {
-            return false;
-        }
-        try {
-            double d = Double.parseDouble(strNum);
-            if (d <0) return false;
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return true;
     }
 
     public void onSaveButtonClick(ActionEvent event) throws IOException {
@@ -94,8 +71,8 @@ public class LimitController {
         var user = this.userRepository.getUser(UserSession.getUserId());
         var budget = new Budget();
         budget.setAmount(budgetAmount);
-        budget.setMonth((byte)getCurrentMonth());
-        budget.setYear((short)getCurrentYear());
+        budget.setMonth((byte) getCurrentMonth());
+        budget.setYear((short) getCurrentYear());
         budget.setUser(user);
         this.budgetRepository.setBudget(budget);
         this.moveToHomePage(event);
@@ -107,19 +84,11 @@ public class LimitController {
     }
 
     public void moveToHomePage(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/home-view.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Helpers.moveToHomePage(event, getClass());
     }
 
     public void onLogOutButtonClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/login-view.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Helpers.onLogOutButtonClick(event, getClass());
     }
 }
 

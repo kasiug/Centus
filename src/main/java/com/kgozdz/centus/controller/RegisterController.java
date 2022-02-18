@@ -15,7 +15,6 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
@@ -24,7 +23,7 @@ public class RegisterController {
     private IUserRepository userRepository;
 
     @FXML
-    private Label userExistErrorMessage;
+    private Label errorLabel;
 
     @FXML
     private TextField firstNameField;
@@ -56,8 +55,13 @@ public class RegisterController {
 
     @FXML
     protected void onRegisterButtonClick(ActionEvent event) throws IOException {
-        if (emailTextField.getText() != "" && usernameTextField.getText() != "" && passwordTextField.getText() != "" && repeatPasswordField.getText() != "" && firstNameField.getText() !="" && lastNameField.getText() !="") {
-            if (passwordTextField.getText().equals(repeatPasswordField.getText()) ) {
+        if (emailTextField.getText() != ""
+                && usernameTextField.getText() != ""
+                && passwordTextField.getText() != ""
+                && repeatPasswordField.getText() != ""
+                && firstNameField.getText() != ""
+                && lastNameField.getText() != "") {
+            if (passwordTextField.getText().equals(repeatPasswordField.getText())) {
                 User user = new User();
                 user.setFirstName(firstNameField.getText());
                 user.setLastName(lastNameField.getText());
@@ -68,21 +72,25 @@ public class RegisterController {
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
+
+                var userExists = this.userRepository.userExists(user);
+                if(userExists){
+                    errorLabel.setText("Taki użytkownik już istnieje w bazie");
+                    return;
+                }
                 this.userRepository.register(user);
                 this.moveToLoginPage(event);
-            } else{
-                userExistErrorMessage.setText("Hasła nie są takie same");
+            } else {
+                errorLabel.setText("Hasła nie są takie same");
             }
-        }
-        else{
-            userExistErrorMessage.setText("Wypełnij wszystkie pola!");
+        } else {
+            errorLabel.setText("Wypełnij wszystkie pola!");
         }
     }
 
-
     @FXML
     protected void onExitToLoginPageLinkClick(ActionEvent event) throws IOException {
-     this.moveToLoginPage(event);
+        this.moveToLoginPage(event);
     }
 
     private void moveToLoginPage(ActionEvent event) throws IOException {

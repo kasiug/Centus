@@ -7,6 +7,7 @@ import com.kgozdz.centus.repository.IUserRepository;
 import com.kgozdz.centus.repository.implementation.BudgetRepository;
 import com.kgozdz.centus.repository.implementation.ExpenseRepository;
 import com.kgozdz.centus.repository.implementation.UserRepository;
+import com.kgozdz.centus.utils.Helpers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,16 +15,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.math.RoundingMode;
-import java.net.URL;
 import java.text.NumberFormat;
-import java.util.Date;
 import java.util.Locale;
 
 public class HomeController {
@@ -60,32 +56,19 @@ public class HomeController {
 
     @FXML
     protected void initialize() {
-        logOutButton.setText("Wyloguj "+ UserSession.getUserName());
+        logOutButton.setText("Wyloguj " + UserSession.getUserName());
         Integer currentMonth = java.time.LocalDate.now().getMonth().getValue();
         Integer currentYear = java.time.LocalDate.now().getYear();
         var userExpenses = this.expenseRepository.getUserExpenses(currentMonth.byteValue(), currentYear.shortValue());
         var expensesSum = userExpenses.stream().mapToDouble(e -> e.amount).sum();
         var userBudget = this.budgetRepository.getUserBudget(currentMonth.byteValue(), currentYear.shortValue());
-        var restToSpend = userBudget != null ? userBudget.amount - expensesSum: 0;
+        var restToSpend = userBudget != null ? userBudget.amount - expensesSum : 0;
         expensesField.setText(currencyFormat(expensesSum));
         remainingAmountField.setText(currencyFormat(restToSpend));
     }
 
-//    @FXML
-//    protected void onLogOutButtonClick() {
-//        boolean isLogged = this.userRepository.login(usernameTextField.getText(), passwordTextField.getText());
-//        String message = isLogged ? "Logged" : "Invalid Username or password";
-//
-//        errorMessageLabel.setText(message);
-//    }
-
     public void onLogOutButtonClick(ActionEvent event) throws IOException {
-        UserSession.cleanUserSession();
-        Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/login-view.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Helpers.onLogOutButtonClick(event, getClass());
     }
 
     public void onAddExpenseButtonButtonClick(ActionEvent event) throws IOException {

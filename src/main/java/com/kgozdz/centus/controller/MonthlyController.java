@@ -1,6 +1,5 @@
 package com.kgozdz.centus.controller;
 
-import com.kgozdz.centus.UserSession;
 import com.kgozdz.centus.model.Budget;
 import com.kgozdz.centus.model.Expense;
 import com.kgozdz.centus.repository.IBudgetRepository;
@@ -9,23 +8,15 @@ import com.kgozdz.centus.repository.IUserRepository;
 import com.kgozdz.centus.repository.implementation.BudgetRepository;
 import com.kgozdz.centus.repository.implementation.ExpenseRepository;
 import com.kgozdz.centus.repository.implementation.UserRepository;
+import com.kgozdz.centus.utils.Helpers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class MonthlyController {
@@ -75,7 +66,7 @@ public class MonthlyController {
                 series2.getData().add(new XYChart.Data(month.toString(), expensesSum))
         );
 
-        barChart.getData().addAll(series1,series2);
+        barChart.getData().addAll(series1, series2);
     }
 
     @FXML
@@ -84,20 +75,10 @@ public class MonthlyController {
     }
 
     public void moveToHomePage(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/home-view.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Helpers.moveToHomePage(event, getClass());
     }
 
     public void onLogOutButtonClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/login-view.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Helpers.onLogOutButtonClick(event, getClass());
     }
-
-
 }

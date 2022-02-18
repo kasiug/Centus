@@ -60,7 +60,7 @@
                   <TextField fx:id="lastNameField" layoutX="18.0" layoutY="14.0" prefHeight="25.0" prefWidth="165.0" promptText="Nazwisko" />
                </children>
             </AnchorPane>
-            <Label fx:id="userExistErrorMessage" layoutX="212.0" layoutY="76.0" prefHeight="17.0" prefWidth="215.0" text="Taki użytkownik już istnieje w bazie" textFill="#f81010" />
+            <Label fx:id="errorLabel" layoutX="212.0" layoutY="76.0" prefHeight="17.0" prefWidth="215.0" text="" textFill="#f81010" />
             <TextField fx:id="firstNameField" layoutX="319.0" layoutY="98.0" prefHeight="25.0" prefWidth="166.0" promptText="Imię" />
             <Label layoutX="222.0" layoutY="266.0" text="Powtórz hasło">
                <font>

@@ -64,4 +64,24 @@ public class UserRepository implements IUserRepository {
         }
         return user;
     }
+
+    @Override
+    public boolean userExists(User user) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("from User where username=:username or email=:email", User.class);
+        query.setParameter("username", user.getUserName());
+        query.setParameter("email", user.getEmail());
+
+        var result = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+
+        if(result != null && result.size()>0){
+           return true;
+        }
+
+        return false;
+    }
 }

@@ -45,7 +45,7 @@ public class LoginController {
     protected void onLoginButtonClick(ActionEvent event) throws IOException {
         loginButton.setText("Logowanie...");
         this.userRepository.login(usernameTextField.getText(), passwordTextField.getText());
-        if (UserSession.getUserId() > 0){
+        if (UserSession.getUserId() > 0) {
             Parent root = FXMLLoader.load(getClass().getResource("/com/kgozdz/centus/home-view.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -64,9 +64,5 @@ public class LoginController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
-
-    public void onLoginButtonClick() throws IOException {
-
     }
 }
