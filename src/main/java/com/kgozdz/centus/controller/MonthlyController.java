@@ -61,7 +61,7 @@ public class MonthlyController {
                 series1.getData().add(new XYChart.Data(month.toString(), expensesSum))
         );
 
-        series2.setName("koszty");
+        series2.setName("limit");
         monthlyBudgets.forEach((month, expensesSum) ->
                 series2.getData().add(new XYChart.Data(month.toString(), expensesSum))
         );

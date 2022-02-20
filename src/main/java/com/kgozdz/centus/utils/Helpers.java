@@ -1,5 +1,6 @@
 package com.kgozdz.centus.utils;
 
+import com.kgozdz.centus.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -40,6 +41,7 @@ public class Helpers {
     }
 
     public static void onLogOutButtonClick(ActionEvent event, Class className) throws IOException {
+        UserSession.cleanUserSession();
         Parent root = FXMLLoader.load(className.getResource("/com/kgozdz/centus/login-view.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

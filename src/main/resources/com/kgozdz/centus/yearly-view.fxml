@@ -31,7 +31,7 @@
                         <CategoryAxis label="Lata" prefHeight="59.0" prefWidth="695.0" side="BOTTOM" />
                      </xAxis>
                      <yAxis>
-                        <NumberAxis label="Wydatki i koszty w zł" side="LEFT" />
+                        <NumberAxis label="Wydatki i limit w zł" side="LEFT" />
                      </yAxis>
                   </BarChart>
                </children>

@@ -31,7 +31,7 @@
                       <CategoryAxis label="Miesiące" prefHeight="43.0" prefWidth="708.0" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis label="Wydatki i koszty w zł" side="LEFT" />
+                      <NumberAxis label="Wydatki i limit w zł" side="LEFT" />
                     </yAxis>
                   </BarChart>
                   <Hyperlink fx:id="exitToHomePageLink" layoutX="299.0" layoutY="320.0" onAction="#onExitToHomePageLinkClick" text="Powrót do strony głównej" />
